@@ -10,7 +10,7 @@
 - **LO** repeatedly describes a **one-page** application.
 - **CHK** requires a **three-page** website.
 - Junior developer confirmed: the project must meet the minimum of three distinct pages.
-- Working resolution recorded in `PROJECT_STATE.md`: CHK is the operative submission requirement; the project proceeds as a three-page website; the one-page language is treated as a non-operative discrepancy.
+- Working resolution recorded in `PROJECT_STATE.md`: CHK is the operative submission requirement; the project proceeds as a multi-page website (minimum three distinct pages); the one-page language is treated as a non-operative discrepancy.
 
 ## LO — Learning Outcomes (summary)
 
