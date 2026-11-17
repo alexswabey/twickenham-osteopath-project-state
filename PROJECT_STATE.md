@@ -9,7 +9,7 @@
 - **Last updated:** 2026-11-17
 - **Deadline:** Monday afternoon → Sunday night (hard; cannot be late)
 - **Current phase:** Phase 4 — Build (Phase 3 complete)
-- **Next action:** Open `meadowside-clinic` as a workspace, lock in the visual tokens (`assets/css/style.css`) and image assets, and scaffold the HTML pages.
+- **Next action:** Preview the scaffolded `meadowside-clinic` pages in the browser, review layout/copy, source & add the 3 WebP photos (`hero`, `portrait`, `treatment`), and commit the initial build.
 
 ## Goal & Scope
 
