@@ -9,7 +9,7 @@
 - **Last updated:** 2026-11-17
 - **Deadline:** Monday afternoon → Sunday night (hard; cannot be late)
 - **Current phase:** Phase 4 — Build (Phase 3 complete)
-- **Next action:** Preview the scaffolded `meadowside-clinic` pages in the browser, review layout/copy, source & add the 3 WebP photos (`hero`, `portrait`, `treatment`), and commit the initial build.
+- **Next action:** Review the v2 editorial redesign of `meadowside-clinic` locally or push to GitHub Pages, decide whether to keep the bespoke editorial SVG artworks or swap in WebP photography, and move toward Phase 5 validation.
 
 ## Goal & Scope
 
@@ -31,8 +31,8 @@
 
 ## Design & Technical Approach (Phase 3 — Confirmed)
 
-- **Visual aesthetic:** Halfway between medical and natural/holistic — calm, high-contrast light palette anchored in deep forest/sage green + warm cream/off-white + subtle warm accent (CSS colour variables used throughout per CHK).
-- **Typography:** Serif throughout (e.g., screen-legible humanist serif such as *Lora* or *Source Serif 4*, sized generously at ~17–18px body with clear line-height for older visitors' readability).
+- **Visual aesthetic:** Halfway between medical and natural/holistic — calm, high-contrast light palette inspired by our three final benchmark inspirations (*Wellthy Clinic*, *Muna Osteopathy & Wellness*, *Sora Health*): anchored in **Deep Mineral Petrol (`#1C313C`)** + **Bath Limestone / Warm Oat (`#F5EFE6`)** + **Soft Mineral Mist (`#E2EAEB`)** + **Warm Sand (`#EBE2D5`)** + **Burnished Sienna (`#9E4A33`)** / **Warm Ochre (`#C89B5B`)** using CSS colour variables throughout per CHK.
+- **Typography:** Serif throughout — pairing *Instrument Serif* (expressive editorial display headings with italic emphasis) with *Source Serif 4* (`18px` / `1.125rem` body, `1.72` line-height for older visitors' readability).
 - **Framework & layout:** Bootstrap 5 (navbar, responsive grid, cards, FAQ accordion, form controls) + custom CSS (`assets/css/style.css` with media query + Flexbox/Grid + CSS variables). No unreviewable custom JS.
 - **Contact form:** HTML5 validated `GET` form on `contact.html` submitting to `thank-you.html` (zero custom JS, satisfies immediate feedback requirement; may revisit later if desired).
 - **Location map:** Custom simplified Twickenham Green area SVG (with descriptive `alt` text / accessible title) + *"Open in Google Maps"* link on `visiting.html` (no embedded iframe).
