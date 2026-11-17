@@ -62,7 +62,7 @@ Full assessment criteria live in `source/assessment-summaries.md`. Project-speci
 - **Fictional clinic identity (Confirmed):** **Meadowside Clinic**; practitioner **Lydia Selby, M.Ost.** (used in full for formal credentials/bio; **Lydia** in conversational body copy; GOsC-registered cranial osteopath).
 - **Assets & performance:** Real royalty-free photos preferred (attributed in `README.md`, converted to WebP where possible with `loading="lazy"` on below-the-fold images per CHK & cohort benchmarks); generated assets as fallback if needed. Map graphic on `visiting.html` will be a lightweight custom SVG.
 
-## Benchmark Takeaways (`EXAMPLE_SITES.md`)
+## Benchmark Takeaways (`EXAMPLE_SITES.md` & `OSTEOPATH_BENCHMARKS.md`)
 
 - **Complete > large:** Keep all planned pages finished with zero `#` placeholder or `under-construction.html` links.
 - **High-contrast light palette:** Avoid dark-on-dark contrast traps; keep colour contrast clear across all sections.
