@@ -68,14 +68,64 @@ Mainstream UI award galleries (Awwwards, SiteInspire) rarely feature local allie
   - **Rare design-award recognition in osteopathy:** Pairs **EB Garamond** (classic humanist serif) with **Asap** in a compact `20 KB` build with a calm, restorative sanctuary feel.
 - **What to emulate:** Editorial serif warmth and compact footprint. *(Technical caveat: its live markup has duplicate `<h1>`s and omits `<nav>`/`<main>`—keep our strict W3C/WCAG HTML semantics.)*
 
+### 7. Osteopathic Sense (`osok.com.au`) — Contemporary Boutique Editorial Typography
+- **URL:** https://osok.com.au
+- **Location / Focus:** Fitzroy & Monbulk, Melbourne, Australia — osteopathy, massage & naturopathy
+- **Design provenance:** Custom WordPress block theme (`ostiopathicsense`) with `<nav>` and `<main>` landmarks
+- **Why it meets our standards:**
+  - **Standout type pairing:** Uses **`Reckless`** (an expressive contemporary editorial serif) paired with **`Acumin`** sans-serif—giving the clinic genuine design-studio polish rather than a stock wellness look.
+  - **Warm, rooted community voice:** Combines multidisciplinary holistic framing with respectful local place naming (*Fitzroy / Ngár-go*, *Monbulk / Monbolok*).
+- **What to emulate:** High-personality editorial serif typography and calm Melbourne studio restraint. *(Technical caveat: omits `<h1>` and `alt` text on its 30 images—ensure we keep strict accessibility in our static build.)*
+
+### 8. Muna Osteopathy & Wellness — Confident Minimalist Hero & Studio Pacing
+- **URL:** https://www.munawellness.com.au/
+- **Location / Focus:** Thornbury & Wagga Wagga, Australia — osteopathy & wellness
+- **Design provenance:** Custom **Webflow** build by **Larsson Studio** (`81 KB` HTML, single stylesheet, 10 scripts)
+- **Why it meets our standards:**
+  - **Uncluttered editorial rhythm:** Opens with a crisp two-word statement (*"Heal. Move."*) and empathetic, community-oriented copy rather than dense medical walls of text.
+- **What to emulate:** Confident, concise hero messaging and generous pacing between sections.
+
+### 9. BodyLab — Swiss Typographic Precision in Allied Health
+- **URL:** https://bodylab.ch
+- **Location / Focus:** Zürich-Altstetten, Switzerland — osteopathy, physiotherapy & rehabilitation
+- **Design provenance:** Modern **Framer** site using **`Inter Tight`**, **`Plus Jakarta Sans`**, **`Fragment Mono`**, and **`Inter Display`**
+- **Why it meets our standards:**
+  - **Editorial grid & metadata accents:** Applies Swiss typographic discipline—pairing geometric sans headings with **`Fragment Mono`** micro-labels and clear social-proof markers (*"Seit 10 Jahren"*).
+- **What to emulate:** Crisp contrast between primary headlines and subtle structured metadata labels (e.g., appointment durations, GOsC cues, and Twickenham Green location tags).
+
+### 10. Whanganui Osteopathy — Ultra-Lean Webflow & Outcome-Led Copy
+- **URL:** https://www.whanganuiosteopathy.co.nz/
+- **Location / Focus:** Whanganui, New Zealand — integrated family & paediatric osteopathy
+- **Design provenance:** Custom **Webflow** build (`35 KB` HTML, 1 stylesheet, 13 scripts)
+- **Why it meets our standards:**
+  - **Featherweight delivery & human focus:** Combines a compact `35 KB` payload with an uplifting, patient-centred triad (*"Feel. Be. Live."*) and warm positioning (*"Helping you on your journey to better health"*).
+- **What to emulate:** Fast, lean front-end weight and plain-English section hooks centred on everyday wellbeing rather than clinical jargon.
+
+### 11. Wellthy Clinic — Marylebone Boutique Polish & Symptom-to-Cause Framing
+- **URL:** https://wellthyclinic.com
+- **Location / Focus:** Marylebone, London W1, UK — osteopathy, Pilates & nutrition
+- **Why it meets our standards:**
+  - **Refined London clinic positioning:** Uses **`Outfit`** + **`Inter`** with `<nav>` and `<main>` landmarks, clear GOsC credibility, structured practitioner showcase (*"Meet the team"*), and patient-friendly framing (*"Recovery starts with the right treatment"*, *"Treating the cause not just the symptoms"*).
+- **What to emulate:** Boutique West End credibility, approachable team presentation, and clear patient pathways. *(Avoid its 555 KB Elementor bloat and 18 missing `alt` attributes.)*
+
+### 12. The Notting Hill Osteopathic Practice — Neighbourhood Poise & Whole-Person Focus
+- **URL:** https://www.nottinghillosteopaths.co.uk
+- **Location / Focus:** Notting Hill, London W11, UK — structural & cranial osteopathy
+- **Design provenance:** Clean **Squarespace** build (`nav` + `main` landmarks, 4 stylesheets, 11/12 images with `alt` text)
+- **Why it meets our standards:**
+  - **Calm, unhurried dignity:** Leads immediately with core osteopathic philosophy (*"We treat the whole person, not just the condition"*) without visual noise or aggressive sales funnels.
+- **What to emulate:** Understated London neighbourhood warmth and concise, reassuring hero positioning.
+
 ---
 
 ## Filtered Out During Audit (Standards Check)
 
-To keep standards high, several prominent clinics were inspected and **excluded**:
+To keep standards high, numerous clinics were inspected and **excluded**:
 - **osteoallies.co.uk:** Despite marketing itself as "Award Winning Osteopath," the live page loads 72 scripts and 21 stylesheets, omits `<main>`, has duplicate `<h1>` tags with spacing typos, and leaves 11 of 20 images without `alt` text.
-- **ssosteopathy.com** & **natalieadamosteopathy.co.uk:** Heavy WordPress + WPBakery templates (~80 scripts each) missing `<main>` and `<h1>` landmarks.
-- **wellthyclinic.com**, **cbdhealthsydney.com.au**, **themarispractice.com**, **wyndhamosteopathy.com.au**, **howclinic.com**, **wellbeingosteopathsbath.co.uk**, and **londonosteopathicclinic.com:** Either standard local clinic templates lacking creative distinction, or heavy Elementor builds with high missing-`alt` counts and weak landmark structure.
+- **ssosteopathy.com**, **natalieadamosteopathy.co.uk**, & **santefiore.com:** Heavy WordPress + WPBakery templates (~24–80 scripts, missing landmarks or blank titles/`alt` tags).
+- **ericaosteopathy.com**, **alignedosteopathy.org**, & **betterbodiesosteo.com:** Bloated payloads (`613–848 KB`), excessive font loads (40+ font families on `ericaosteopathy.com`), or heavy Wix builders falling back to Arial/Helvetica.
+- **cbdhealthsydney.com.au**, **themarispractice.com**, **wyndhamosteopathy.com.au**, **howclinic.com**, **wellbeingosteopathsbath.co.uk**, **tonbridgeosteopathicclinic.co.uk**, **healwithchelsea.com**, and **londonosteopathicclinic.com:** Either standard local clinic templates lacking creative distinction, or heavy Elementor/Divi builds with high missing-`alt` counts and weak landmark structure.
+- **symmetrywellnesscentre.ca:** Clean Framer build, but positioned primarily as a massage therapy clinic rather than an osteopath-led practice.
 
 ---
 
