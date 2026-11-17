@@ -9,7 +9,7 @@
 - **Last updated:** 2026-11-17
 - **Deadline:** Monday afternoon → Sunday night (hard; cannot be late)
 - **Current phase:** Phase 4 — Build (Phase 3 complete)
-- **Next action:** Review the v3 luminous redesign of `meadowside-clinic` locally, commit & push it to update GitHub Pages (currently serving initial scaffold `d4f4883`), decide whether to swap in real WebP photos or keep the custom SVG illustrations, and proceed to Phase 5 validation.
+- **Next action:** Review the live v3 site on GitHub Pages (`0734936`), decide whether to swap in real WebP photos or keep the custom SVG illustrations, and proceed to Phase 5 (W3C/Jigsaw validation, Lighthouse audit, screenshots, and `README.md`).
 
 ## Goal & Scope
 
@@ -57,7 +57,7 @@ Full assessment criteria live in `source/assessment-summaries.md`. Project-speci
 ## Open Questions
 
 ### Phase 4 — Build
-- **Website repo:** `alexswabey/meadowside-clinic` (public GitHub repo) cloned to `/Users/alexs/Library/Mobile Documents/com~apple~CloudDocs/VSCode/meadowside-clinic` and added to workspace; GitHub Pages enabled at https://alexswabey.github.io/meadowside-clinic/ (live build currently on `d4f4883`; v3 redesign ready locally to commit & push).
+- **Website repo:** `alexswabey/meadowside-clinic` (public GitHub repo) cloned to `/Users/alexs/Library/Mobile Documents/com~apple~CloudDocs/VSCode/meadowside-clinic` and added to workspace; GitHub Pages live at https://alexswabey.github.io/meadowside-clinic/ (serving v3 build `0734936`).
 - **Clinic location & fictional address:** 14 Meadowside Mews, Twickenham Green, Twickenham TW2 5QA (phone `020 8555 0142`, email `enquiries@meadowsideclinic.example`).
 - **Fictional clinic identity (Confirmed):** **Meadowside Clinic**; practitioner **Lydia Selby, M.Ost.** (used in full for formal credentials/bio; **Lydia** in conversational body copy; GOsC-registered cranial osteopath).
 - **Assets & performance:** Bespoke SVG artworks (`twickenham-map.svg`, `lydia-selby-portrait.svg`, plus inline treatment room & cranial contact illustrations) are currently wired in with `loading="lazy"` on below-the-fold `<img>` elements. Real royalty-free photos (converted to WebP & attributed in `README.md`) remain preferred if sourced before Phase 5; otherwise custom SVGs are complete and lightweight.
