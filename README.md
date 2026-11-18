@@ -7,9 +7,10 @@ Project state and scoping notes for the **Twickenham Osteopath website** — a m
 | Path | Purpose |
 |---|---|
 | `PROJECT_STATE.md` | Single source of truth: current phase, goal, guardrails, decisions, and open questions |
+| `TASKS.md` | Design refinement workstreams (A–F) and Phase 5 validation, QA & ship checklist (G–I) |
 | `PROJECT_BRIEF.md` | Assessor-facing project brief using the bootcamp brief template |
 | `EXAMPLE_SITES.md` | Links to 4 previous cohort example projects (Pass, Merit, Distinction, Outstanding) |
-| `OSTEOPATH_BENCHMARKS.md` | Curated real-world osteopath & clinic websites audited for creative emulation |
+| `OSTEOPATH_BENCHMARKS.md` | Curated real-world osteopath & clinic websites (Selected Inspirations + Olie's London benchmarks) |
 | `source/assessment-summaries.md` | Binding summaries of the bootcamp Learning Outcomes and Submission Checklist |
 | `STARTER_PROMPT.md` | Session prompt and working workflow for AI-assisted scoping and mentoring |
 

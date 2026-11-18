@@ -5,20 +5,16 @@
 >
 > ## Why this list exists
 >
-> The v3 "luminous" build is committed, pushed, and live — but the design
-> isn't *there* yet. Shipping validators and a README around a design we're
-> unhappy with would be polishing the wrong layer, so this list puts a
-> structured **design refinement pass** first, and re-homes the validation /
-> deployment / README work (the old task list) at the end, intact.
+> The palette + Modern Web Guidance conformance pass (`d267cc9`) is committed and
+> pushed to `main` (v3 `0734936` remains in Git history if needed), **but layout
+> refinement isn't done yet**. Shipping final validation screenshots and a README
+> around an unreviewed layout would polish the wrong layer, so this list puts a
+> structured **design refinement pass** first, and keeps final validation /
+> deployment / README work at the end, intact.
 >
 > ## What we know so far (code-level review, 2026-11-18)
 >
-> The design *system* is sound: clean CSS token palette, a coherent component
-> set (cards, trust metrics, promise panels, pull-quotes, accordion), solid
-> a11y groundwork (focus ring, skip link, reduced-motion, ARIA on SVGs).
->
-> Suspicious spots that most likely explain the "not there yet" feeling —
-> **hypotheses to test in Phase A, not verdicts:**
+> **Completed & pushed pre-layout-pass (`d267cc9`, 2026-11-18):** Modern Web Guidance audit & fixes (semantic `<figure>`/`<blockquote>` testimonials, native non-exclusive `<details>`/`<summary>` FAQs, zero-JS `:user-invalid` contact validation, shared `brand-mark.svg`, WCAG `1.4.11` borders/focus rings, `@media (forced-colors: active)`, `clamp()`, `scroll-padding-top`, `fetchpriority="high"`, and W3C Nu HTML `0/0` + Jigsaw CSS `0/0` locally). Remaining design hypotheses to test visually in **Phase A**:
 >
 > 1. **A crowded hero.** Eyebrow, H1, lead, two CTAs, a phone line, a
 >    3-column trust-metrics bar, and a large illustration all compete in the
@@ -26,12 +22,14 @@
 > 2. **Templated page openers.** Every page starts the same way
 >    (`.page-intro`: eyebrow → H1 with italic accent → lead → two-column row).
 >    Flipping through all six, they may read as one page repeated.
-> 3. **Coral under-leveraged.** The "luminous" energy is carried by warm
->    coral/gold, but it's confined to italics, numerals, and thin card borders;
->    most surface area is emerald/white/mint.
+> 3. **Palette swap completed locally (2026-11-18 ✅):** Rejected v3's leafy
+>    emerald (`#144D46`) and coral-orange (`#C24129` / `#F16344`) and migrated
+>    all CSS tokens and SVGs in `meadowside-clinic` to **190° Clinical Teal
+>    (`#12525E`) + Mist (`#EAF3F5`) + Porcelain (`#FAFCFD`) + Warm Linen (`#F5F2ED`)
+>    + Rosewood (`#8A3C54`)**. Visually review balance in Chrome during Phase A.
 > 4. **The illustrations.** Portrait, treatment room, map, and cranial diagram
->    are bespoke SVGs — code can't judge whether they carry their weight.
->    These are the first thing to look at in Phase A.
+>    have been recoloured to the new palette, but need visual inspection —
+>    code can't judge whether they carry their weight or should become WebP photos.
 >
 > ## How to work through this
 >
@@ -51,9 +49,10 @@
 
 ## A. Diagnose (½ hour, mandatory)
 
-- [ ] **Capture a visual baseline** — full-page screenshots of all 6 pages, desktop (1440px) and mobile (390px). Save under `docs/design/before/` so they survive as "before" evidence.
-- [ ] **Write the note list.** Looking at the baseline (and the live site), write down 3–5 *specific* "not there yet" notes. Concrete beats vibes: "hero feels cramped at 1440px, no focal point" ✅ · "it just feels off" ❌. Check each of the four hypotheses above: does it hold, and where?
-- [ ] **Compare against the benchmarks** (Wellthy, Muna, Sora — see `OSTEOPATH_BENCHMARKS.md`): do we get the same *bright, uplifting* feeling, or do we read as clinical/flat/bright-but-lifeless? Name the gap in one sentence.
+- [ ] **Capture a visual baseline & inspect Chrome** — Enable Chrome remote debugging (`chrome://inspect/#remote-debugging`), capture desktop (`1440px`) + mobile (`390px`/`320px`) screenshots of `d267cc9` under `docs/design/before/` (plus optional v3 `0734936` comparison from Git history), and visually inspect the Clinical Teal + Rosewood site, `:user-invalid` form validation, and `<details>` FAQs.
+- [ ] **Write the note list.** Looking at the baseline (and live site), write down 3–5 *specific* "not there yet" notes. Concrete beats vibes: "hero feels cramped at 1440px, no focal point" ✅ · "it just feels off" ❌. Check hypotheses #1, #2, and #4 (and confirm the new teal + rosewood feel).
+- [x] **Lock & apply the calibrated clinical-teal hue & non-orange accent** — Confirmed and pushed **`190°` Clinical Teal (`#12525E`) + Rosewood (`#8A3C54`)** + `#EAF3F5` / `#FAFCFD` / `#F5F2ED` across `:root`, shared `brand-mark.svg`, and all SVGs (`d267cc9`, 2026-11-18).
+- [ ] **Compare against the benchmarks** (3 Selected Inspirations + 3 London Benchmarks from Olie — see `OSTEOPATH_BENCHMARKS.md`): do we balance *clean clinical credibility* with *human warmth* (differentiating from *Maris*/*Body Evolve*'s standard blues while matching *Wellthy*/*Sora*'s poise and *Muna*'s lightness)? Name the gap in one sentence.
 - [ ] **Score the four SVG artworks** (treatment room, portrait, map, cranial diagram) 1–5 each against: style consistency with each other, palette harmony, and "does this make the site feel finished?". Note which 1–2, if any, are weakest.
 - [ ] **Set priorities.** Mark 1–2 workstreams (B–E) as **PRIMARY** in the note list; the rest become stretch. State the single sentence that describes what "done" looks like (e.g. *"the site should feel like one calm, premium practice, not a Bootstrap template with a palette swap"*).
 
@@ -63,7 +62,7 @@
 
 - [ ] **Pick the hero's focal point: text-led or image-led** (and commit to it). If text-led, the illustration steps down in size/placement; if image-led, the headline moves over or beside it with a calmer treatment.
 - [ ] **Resolve the trust-metrics bar.** Three metrics stacked under the CTAs is a lot of first-viewport furniture. Either integrate one metric subtly, or move the metrics into the "Meet Your Osteopath" section where they support the bio.
-- [ ] **Re-test the H1 treatment** — size, line breaks, which word gets the coral italic. The line should read in under five seconds: *who, what, where*.
+- [ ] **Re-tune the H1 treatment** — size, line breaks, which word gets the italic accent colour. The line should read in under five seconds: *who, what, where*.
 - [ ] **Check the sub-CTA row** (call + email links) — is it adding warmth or clutter? If clutter, drop to one quiet line.
 - [ ] **Run Phase F regress**, then commit ("Design: hero reworked — …").
 
@@ -82,34 +81,35 @@
 *This is where the old "WebP vs SVG" decision actually gets made — now as a design judgement per artwork, not a blanket call.*
 
 - [ ] **For each of the four SVGs, decide: iterate, keep, or replace.** Use the Phase A scores. Keep what's working; don't rework everything out of hand-wringing.
-- [ ] **If iterating SVGs:** harmonise all four to one style and palette (same stroke weight, same colour family, same level of detail); fix anything that clashes with the ivory/mint/emerald/coral tokens.
-- [ ] **If replacing with photos:** choose royalty-free treatment-room / interior shots (avoid stock portraits — they can't be Lydia and risk reading as a false claim), convert to **WebP**, keep `loading="lazy"` + `width`/`height`, and note attribution for the README.
+- [x] **Initial recolouring done (`190°` Clinical Teal + Rosewood):** Harmonised all four SVGs, `brand-mark.svg`, and `thank-you.html` checkmark to `#12525E` + `#8A3C54` + `#F5F2ED`. Still evaluate geometry/polish after Phase A scoring.
+- [ ] **If replacing with photos:** choose royalty-free treatment-room / interior shots (avoid stock portraits — they can't be Lydia and risk reading as a false claim), convert to **WebP**, keep `width`/`height` (`fetchpriority="high"` on LCP, `loading="lazy"` below the fold), and note attribution for the README.
 - [ ] **Re-verify alt text** on every changed/replaced image so it still describes what's actually shown.
 - [ ] **Run Phase F regress**, then commit with the per-artwork decisions in the message.
 
-## E. Workstream — Polish, rhythm & "luminous" energy (stretch)
+## E. Workstream — Polish, rhythm & clean clinical warmth (stretch)
 
 - [ ] **Vertical rhythm pass** — section padding (currently 3.75–4.5rem) and card inner padding: tighten or open up *deliberately*, so whitespace reads as calm, not accidental.
-- [ ] **Type scale check** — H1 (2.65→3.6rem) vs H2 (2.2→2.7rem) vs H3: does the step between H1 and H2 feel editorial, or cramped? Adjust `:root`-level, not per-page.
-- [ ] **Leverage the warm palette** — pick 2–3 moments per page where coral/gold are the *stars*, not footnotes (a section wash, the index numerals, a divider or the active-nav underline). The goal is "sunny", not "a green site with orange text".
-- [ ] **Buttons & pills** — the full-radius pill buttons are a strong choice; confirm they're consistent everywhere (no straight Bootstrap `btn` leaking through) and that the accent gradient button is used for the *one* most important CTA, not several.
-- [ ] **Utility bar & footer density** — the dark-emerald utility bar above the navbar: is it earning its place on every page, or does it read as noise? Same check for footer column density.
+- [x] **Type scale check** — Switched `h1`/`h2` to fluid `clamp()` sizing with `text-wrap: balance` and `font-size-adjust: from-font`; still check editorial spacing visually in Chrome.
+- [x] **Apply & balance the calibrated clinical-teal palette** — Updated `:root`, eliminated all hardcoded CSS hexes outside tokens, and recoloured SVG fills to `190°` Clinical Teal (`#12525E`), `#EAF3F5`, `#FAFCFD`, `#F5F2ED`, and Rosewood (`#8A3C54`); verify final balance visually in Chrome.
+- [ ] **Buttons & pills** — the full-radius pill buttons are a strong choice; confirm they're consistent everywhere (no straight Bootstrap `btn` leaking through) and that the primary/accent CTA treatment highlights the *one* most important action per section, not several.
+- [ ] **Utility bar & footer density** — the top clinical-teal utility bar above the navbar: is it earning its place on every page, or does it read as noise? Same check for footer column density.
 - [ ] **Run Phase F regress**, then commit.
 
 ## F. Regress (after every workstream, ~15 min)
 
 - [ ] **Resize the touched pages** mobile → tablet → desktop: no overlap, truncation, or broken nav/hamburger.
-- [ ] **Contrast check** on any colour that changed — WCAG AA minimum for text (especially coral-on-ivory, gold-on-emerald, muted text on mint washes).
-- [ ] **Keyboard pass** on touched pages — visible focus, logical order, accordions operable.
-- [ ] **Console check** — zero JS errors after the changes.
+- [x] **Contrast check (palette math verified 2026-11-18)** — Verified WCAG AA/AAA across `#12525E` + `#8A3C54` tokens (`3.66:1` input border, `8.77:1+` white focus on dark bars, `6.53:1` Rosewood on mist); re-verify after any B–E layout edits.
+- [ ] **Keyboard & visual Chrome pass on touched pages** — Enable Chrome remote debugging and verify desktop + mobile layout, `:user-invalid` contact errors, `<details>` FAQs, and visible focus. *(Blocked in 2026-11-18 session because Chrome remote debugging was off.)*
+- [ ] **Console check** — zero JS errors in Chrome DevTools after the changes.
 
 ## G. Validate (the gate — from the previous task list)
 
 > *W3C HTML + Jigsaw CSS with zero errors and zero warnings on every page. LO2 / CHK "Testing & Validation".*
+> *Pre-refinement baseline (2026-11-18): W3C Nu HTML `0/0` across all 6 pages and W3C Jigsaw CSS `0/0` verified locally. Re-run and screenshot after finishing B–E.*
 
-- [ ] **W3C HTML (Nu) validation on all 6 pages** (live URLs or local files). Record counts per page. *(Needs network to `validator.w3.org`.)*
+- [ ] **Final W3C HTML (Nu) validation on all 6 pages** (re-run after Phase B–E edits).
 - [ ] **Fix to 0/0 on all 6 pages**, re-run to confirm.
-- [ ] **Jigsaw CSS validation on `assets/css/style.css`** *(network to `jigsaw.w3.org`)*.
+- [ ] **Final Jigsaw CSS validation on `assets/css/style.css`** *(after any B–E CSS edits)*.
 - [ ] **Fix to 0/0**, re-run to confirm.
 - [ ] **Screenshot both validators' pass results** for README evidence.
 
@@ -118,7 +118,7 @@
 - [ ] **Lighthouse (mobile + desktop) on the deployed site**, note all four category scores.
 - [ ] **Fix the actionable findings** (image sizing, font `display`, stray a11y flags) and re-run.
 - [ ] **Full a11y sweep on every page** — contrast, tap targets ≥ 44px, focus visibility, meaningful alt/ARIA on all non-text elements.
-- [ ] **Cross-page sweep** — click every internal link (no `#`, no dead ends), navbar identical & functional on all 6 pages, contact form → `thank-you.html` flow works end-to-end, zero console errors, remove any commented-out code.
+- [ ] **Cross-page sweep** — click every internal link (no `#`, no dead ends), navbar identical & functional on all 6 pages, contact form → `thank-you.html` flow works end-to-end, zero console errors, remove any commented-out code *(note: Bootstrap JS is now only needed for mobile navbar collapse)*, and verify zero placeholder text, staging URLs, or stale timestamps (lessons from Olie's London benchmarks in `OSTEOPATH_BENCHMARKS.md`).
 
 ## I. Final ship & README
 
