@@ -16,6 +16,7 @@
 
 ## Non-Negotiable Site Guardrails (`../meadowside-clinic`)
 - Multi-page static site (`5` main pages + `thank-you.html`) built with **HTML5, custom CSS, and Bootstrap 5**.
+- **Bootstrap-first & readable code:** Showcase Bootstrap 5 components, utilities, and `--bs-*` theming rather than reinventing layout in custom CSS. Keep code clean, well-commented, and easy to assess in an editor, and explain Bootstrap features and nuances as we build.
 - **Authorable Code & JavaScript Policy:** The developer must be able to read, understand, and assess every line of authored site code (currently HTML5 and CSS only; no JavaScript experience).
   - **No custom JavaScript:** Do not write `.js` files, inline `<script>` blocks, `on*` HTML attributes, or JS polyfills. Solve interactions using semantic HTML5, custom CSS, and declarative Bootstrap 5 `data-bs-*` attributes.
   - **Bootstrap bundle only:** Unmodified Bootstrap 5 JS (via CDN) is permitted only to power Bootstrap's built-in components via HTML attributes—never custom JS scripting against Bootstrap's API.
