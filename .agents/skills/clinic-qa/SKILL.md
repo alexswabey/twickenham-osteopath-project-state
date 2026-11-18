@@ -3,8 +3,9 @@ name: clinic-qa
 description: >-
   Run repeatable quality assurance for the Meadowside Clinic website (`../meadowside-clinic`),
   covering WCAG contrast verification, legacy color/placeholder scans, W3C Nu HTML and Jigsaw CSS
-  0/0 validation, responsive Chrome inspection, Lighthouse audits, and bootcamp submission
-  checklist verification. Use during Phase A, F, G, H, or after modifying site HTML, CSS, or SVGs.
+  0/0 validation, Chrome-free Playwright QA (WebKit & headless Chromium), Lighthouse/CWV audits,
+  and bootcamp submission checklist verification. Use during Phase A, F, G, H, or after modifying
+  site HTML, CSS, or SVGs.
 ---
 
 # Meadowside Clinic QA Runbook
@@ -57,24 +58,22 @@ Confirm deterministic Modern Web Guidance scan stays clean:
 npx -y modern-web-guidance@latest legacy-scan ../meadowside-clinic --json
 ```
 
-## 3. Chrome Visual, Responsive & Interactive QA
+## 3. Chrome-Free Playwright & Browser QA
 
-Start a local static server for previewing:
+Run the automated Playwright QA runner (launches an ephemeral local server on `127.0.0.1` and uses Playwright's pre-cached WebKit + bundled headless Chromium shell — no Google Chrome install required):
 
 ```sh
-python3 -m http.server 8765 --bind 127.0.0.1 --directory ../meadowside-clinic
+node .agents/skills/clinic-qa/scripts/playwright_qa.mjs --browsers=webkit,chromium
 ```
 
-Inspect `http://127.0.0.1:8765/` in Chrome (`chrome://inspect/#remote-debugging` if driving via browser tool) at desktop (`1440x900`) and mobile (`390x844`, `320x700`):
-- **No horizontal overflow:** `document.documentElement.scrollWidth <= window.innerWidth` at every width; `.trust-metrics` stacks cleanly below `30em`.
-- **Navbar & anchors:** Shared `brand-mark.svg` loads (`naturalWidth > 0`) on all 6 pages; active `[aria-current="page"]` indicator shows cleanly; `#appointments`, `#faq`, `#accessibility`, and `#main-content` clear the sticky header.
-- **Native `<details>` FAQs (`index.html`, `treatments.html`):** Non-exclusive toggling works via mouse and keyboard; closed answers remain searchable via Find-in-Page.
-- **Contact form (`contact.html`):** Zero errors visible on initial load; leaving required fields invalid after interaction shows `:user-invalid` inline `.form-error-msg` guidance; valid submit routes via `GET` to `thank-you.html`.
-- **Keyboard & console:** Visible `:focus-visible` ring on light cards AND dark `.utility-bar` / `.site-footer` links; zero browser console errors.
+Pass `--screenshots=<dir>` (outside the repo, e.g., an artifacts folder, unless capturing submission screenshots) to save full-page PNGs across `desktop-1440` (`1440x900`) and `mobile-390` (`390x844`):
+- **Media, SVGs & overflow:** All `<img>` elements decode cleanly (`naturalWidth > 0`, including standalone SVGs), zero zero-width `<svg>` graphics, `.trust-metrics` column layout (`1` at `320px`, `3` at `>=480px`), and zero horizontal overflow (`scrollWidth <= innerWidth`) across `1440px`, `390px`, and `320px`.
+- **Navbar, anchors & interactive checks:** Shared `brand-mark.svg` loads on all 6 pages; mobile `.navbar-toggler` expands/collapses; `#faq` and `#accessibility` clear the sticky header; `<details>` FAQs (`#homeFaq`, `#clinicFaq`) toggle non-exclusively; `:user-invalid` validation hides errors initially, reveals `.form-error-msg` after invalid interaction, and routes valid `GET` submissions to `thank-you.html`; zero console/page errors.
+- **Manual visual pass (Firefox / Safari):** When needed, run `python3 -m http.server 8765 --bind 127.0.0.1 --directory ../meadowside-clinic`, open `http://127.0.0.1:8765/` in Firefox or Safari (remember Safari's **Develop -> Disable Caches** / hard reload when inspecting local SVG or CSS updates), and verify keyboard `:focus-visible` rings on both light cards and dark `.utility-bar` / `.site-footer` links.
 
 ## 4. Phase 5 Readiness (`source/assessment-summaries.md`)
 
 Before declaring submission ready:
-- Capture validator pass screenshots and desktop/mobile screenshots (`docs/screenshots/`).
-- Run Lighthouse (Mobile & Desktop) on the live GitHub Pages deployment.
+- Capture validator pass screenshots and desktop/mobile screenshots (`docs/screenshots/`, e.g., via `playwright_qa.mjs --screenshots=../meadowside-clinic/docs/screenshots` or Firefox/Safari).
+- Run Lighthouse / Core Web Vitals (Mobile & Desktop) on the live GitHub Pages deployment via PageSpeed Insights (`https://pagespeed.web.dev/`) or Playwright's bundled headless Chromium — no Google Chrome install needed.
 - Verify `../meadowside-clinic/README.md` covers all LO4/LO5 and CHK sections.

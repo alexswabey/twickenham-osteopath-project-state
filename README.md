@@ -7,7 +7,7 @@ Project state and scoping notes for the **Twickenham Osteopath website** — a m
 | Path | Purpose |
 |---|---|
 | `AGENTS.md` | Auto-loaded Antigravity rules, mentoring style, site guardrails, and Modern Web Guidance policy |
-| `.agents/skills/clinic-qa/` | Repeatable QA runbook (`SKILL.md`) and `:root` contrast verifier (`scripts/check_contrast.py`) |
+| `.agents/skills/clinic-qa/` | Repeatable QA runbook (`SKILL.md`), `:root` contrast verifier (`scripts/check_contrast.py`), and Chrome-free Playwright QA runner (`scripts/playwright_qa.mjs`) |
 | `meadowside-clinic.code-workspace` | VS Code multi-root workspace mounting project docs alongside `../meadowside-clinic` |
 | `PROJECT_STATE.md` | Single source of truth: current phase, goal, architecture, confirmed palette tokens, and open questions |
 | `TASKS.md` | Design refinement workstreams (A–F) and Phase 5 validation, QA & ship checklist (G–I) |

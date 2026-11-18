@@ -5,7 +5,7 @@
 >
 > ## Why this list exists
 >
-> The palette + Modern Web Guidance conformance pass (`d267cc9`) is committed and
+> The palette + Modern Web Guidance conformance pass (`d267cc9`) and Playwright SVG/`320px` navbar fixes (`f7103b9`) are committed and
 > pushed to `main` (v3 `0734936` remains in Git history if needed), **but layout
 > refinement isn't done yet**. Shipping final validation screenshots and a README
 > around an unreviewed layout would polish the wrong layer, so this list puts a
@@ -14,7 +14,7 @@
 >
 > ## What we know so far (code-level review, 2026-11-18)
 >
-> Pre-layout modernisation & conformance fixes are pushed in `d267cc9` *(full specs live in `PROJECT_STATE.md`)*. Remaining design hypotheses to test visually in **Phase A**:
+> Pre-layout modernisation & bugfixes are pushed in `f7103b9` *(following `d267cc9`; full specs live in `PROJECT_STATE.md`)*. Remaining design hypotheses to test visually in **Phase A**:
 >
 > 1. **A crowded hero.** Eyebrow, H1, lead, two CTAs, a phone line, a
 >    3-column trust-metrics bar, and a large illustration all compete in the
@@ -23,9 +23,9 @@
 >    (`.page-intro`: eyebrow → H1 with italic accent → lead → two-column row).
 >    Flipping through all six, they may read as one page repeated.
 > 3. **Palette swap completed (`d267cc9` ✅):** Visually confirm the Clinical
->    Teal + Rosewood balance (see `PROJECT_STATE.md` for tokens) in Chrome during Phase A.
+>    Teal + Rosewood balance (see `PROJECT_STATE.md` for tokens) across Playwright screenshots / Firefox or Safari during Phase A.
 > 4. **The illustrations.** All SVGs now use the Clinical Teal + Rosewood palette,
->    but need visual scoring in Chrome to judge whether they stay or become WebP photos.
+>    but need visual scoring (via Playwright screenshots / Firefox or Safari) to judge whether they stay or become WebP photos.
 >
 > ## How to work through this
 >
@@ -45,7 +45,7 @@
 
 ## A. Diagnose (½ hour, mandatory)
 
-- [ ] **Capture a visual baseline & inspect Chrome** — Enable Chrome remote debugging (`chrome://inspect/#remote-debugging`), capture desktop (`1440px`) + mobile (`390px`/`320px`) screenshots of `d267cc9` under `docs/design/before/` (plus optional v3 `0734936` comparison from Git history), and visually inspect the Clinical Teal + Rosewood site, `:user-invalid` form validation, and `<details>` FAQs.
+- [ ] **Capture & review the Chrome-free visual baseline** — Run `node .agents/skills/clinic-qa/scripts/playwright_qa.mjs --browsers=webkit,chromium --screenshots=../meadowside-clinic/docs/design/before` against `f7103b9` (saving WebKit/headless-Chromium `1440px` + `390px` PNGs; plus optional v3 `0734936` comparison from Git history) and review in Firefox/Safari alongside the screenshots to inspect the Clinical Teal + Rosewood balance, `:user-invalid` form validation, and `<details>` FAQs.
 - [ ] **Write the note list.** Looking at the baseline (and live site), write down 3–5 *specific* "not there yet" notes. Concrete beats vibes: "hero feels cramped at 1440px, no focal point" ✅ · "it just feels off" ❌. Check hypotheses #1, #2, and #4 (and confirm the new teal + rosewood feel).
 - [x] **Lock & apply the calibrated clinical-teal hue & non-orange accent** — Confirmed & pushed in `d267cc9` *(see `PROJECT_STATE.md`)*.
 - [ ] **Compare against the benchmarks** (3 Selected Inspirations + 3 London Benchmarks from Olie — see `OSTEOPATH_BENCHMARKS.md`): do we balance *clean clinical credibility* with *human warmth* (differentiating from *Maris*/*Body Evolve*'s standard blues while matching *Wellthy*/*Sora*'s poise and *Muna*'s lightness)? Name the gap in one sentence.
@@ -85,18 +85,18 @@
 ## E. Workstream — Polish, rhythm & clean clinical warmth (stretch)
 
 - [ ] **Vertical rhythm pass** — section padding (currently 3.75–4.5rem) and card inner padding: tighten or open up *deliberately*, so whitespace reads as calm, not accidental.
-- [x] **Type scale check** — Switched `h1`/`h2` to fluid `clamp()` sizing with `text-wrap: balance` and `font-size-adjust: from-font`; still check editorial spacing visually in Chrome.
-- [x] **Apply & balance the calibrated clinical-teal palette (`d267cc9`)** — CSS `:root` tokens and SVGs updated *(see `PROJECT_STATE.md`)*; verify final visual balance in Chrome.
+- [x] **Type scale check** — Switched `h1`/`h2` to fluid `clamp()` sizing with `text-wrap: balance` and `font-size-adjust: from-font`; still check editorial spacing visually in Playwright screenshots / Firefox or Safari.
+- [x] **Apply & balance the calibrated clinical-teal palette (`d267cc9`)** — CSS `:root` tokens and SVGs updated *(see `PROJECT_STATE.md`)*; verify final visual balance in Playwright screenshots / Firefox or Safari.
 - [ ] **Buttons & pills** — the full-radius pill buttons are a strong choice; confirm they're consistent everywhere (no straight Bootstrap `btn` leaking through) and that the primary/accent CTA treatment highlights the *one* most important action per section, not several.
 - [ ] **Utility bar & footer density** — the top clinical-teal utility bar above the navbar: is it earning its place on every page, or does it read as noise? Same check for footer column density.
 - [ ] **Run Phase F regress**, then commit.
 
 ## F. Regress (after every workstream, ~15 min)
 
-- [ ] **Resize the touched pages** mobile → tablet → desktop: no overlap, truncation, or broken nav/hamburger.
+- [x] **Resize the touched pages (`f7103b9` baseline verified 2026-11-18)** — Verified `1440px`, `390px`, and `320px` across all 6 pages in Playwright (`webkit`, headless `chromium`) with zero horizontal overflow; **re-run after each Phase B–E edit**.
 - [x] **Contrast check (palette math verified 2026-11-18)** — Verified WCAG AA/AAA across `#12525E` + `#8A3C54` tokens (`3.66:1` input border, `8.77:1+` white focus on dark bars, `6.53:1` Rosewood on mist); re-verify after any B–E layout edits.
-- [ ] **Keyboard & visual Chrome pass on touched pages** — Enable Chrome remote debugging and verify desktop + mobile layout, `:user-invalid` contact errors, `<details>` FAQs, and visible focus. *(Blocked in 2026-11-18 session because Chrome remote debugging was off.)*
-- [ ] **Console check** — zero JS errors in Chrome DevTools after the changes.
+- [ ] **Keyboard & visual browser pass on touched pages** — Verify desktop + mobile visual polish and visible `:focus-visible` rings in Firefox/Safari after each B–E edit (automated `<details>` FAQ + `:user-invalid` form + anchor clearance checks covered by `playwright_qa.mjs`).
+- [x] **Console check (`f7103b9` baseline verified 2026-11-18)** — zero console/page errors across all 6 pages in Playwright `webkit` + headless `chromium`; **re-run after each Phase B–E edit**.
 
 ## G. Validate (the gate — from the previous task list)
 
@@ -111,7 +111,7 @@
 
 ## H. Performance, accessibility & QA (from the previous task list)
 
-- [ ] **Lighthouse (mobile + desktop) on the deployed site**, note all four category scores.
+- [ ] **Lighthouse / Core Web Vitals (mobile + desktop) on the deployed site** (via PageSpeed Insights `pagespeed.web.dev` or Playwright headless Chromium — no Chrome install needed), note all four category scores.
 - [ ] **Fix the actionable findings** (image sizing, font `display`, stray a11y flags) and re-run.
 - [ ] **Full a11y sweep on every page** — contrast, tap targets ≥ 44px, focus visibility, meaningful alt/ARIA on all non-text elements.
 - [ ] **Cross-page sweep** — click every internal link (no `#`, no dead ends), navbar identical & functional on all 6 pages, contact form → `thank-you.html` flow works end-to-end, zero console errors, remove any commented-out code *(note: Bootstrap JS is now only needed for mobile navbar collapse)*, and verify zero placeholder text, staging URLs, or stale timestamps (lessons from Olie's London benchmarks in `OSTEOPATH_BENCHMARKS.md`).
