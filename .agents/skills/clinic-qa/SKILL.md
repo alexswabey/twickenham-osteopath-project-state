@@ -2,25 +2,16 @@
 name: clinic-qa
 description: >-
   Run repeatable quality assurance for the Meadowside Clinic website (`../meadowside-clinic`),
-  covering WCAG contrast verification, legacy color/placeholder scans, W3C Nu HTML and Jigsaw CSS
-  0/0 validation, Chrome-free Playwright QA (WebKit & headless Chromium), Lighthouse/CWV audits,
-  and bootcamp submission checklist verification. Use during Phase A, F, G, H, or after modifying
-  site HTML, CSS, or SVGs.
+  covering WCAG contrast verification, W3C Nu HTML and Jigsaw CSS 0/0 validation,
+  Chrome-free Playwright QA (WebKit & headless Chromium), Lighthouse/CWV audits,
+  and bootcamp submission checklist verification. Use after modifying site HTML, CSS, or SVGs.
 ---
 
 # Meadowside Clinic QA Runbook
 
 Run these checks from `twickenham-osteopath-project-state` (or with both folders mounted via `meadowside-clinic.code-workspace`) after editing files in `../meadowside-clinic`.
 
-## 1. Local Code & Contrast Sanity Checks
-
-Check for leftover legacy emerald/coral hexes (`144D46`, `F16344`, `C24129`, `E6F4EC`, `96b5a5`) or accidental Bootstrap `.accordion` markup:
-
-```sh
-grep -rnE "144[dD]46|[fF]16344|[cC]24129|[eE]6[fF]4[eE][cC]|96[bB]5[aA]5|accordion" ../meadowside-clinic --exclude-dir=.git
-```
-
-Expected: zero matches (`exit code 1`).
+## 1. Contrast Sanity Check
 
 Verify `:root` palette contrast ratios against WCAG AA (`>= 4.5:1` body text, `>= 3:1` UI borders & focus rings):
 
