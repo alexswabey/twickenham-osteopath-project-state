@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "name": "twickenham-osteopath-project-state",
+      "path": "."
+    },
+    {
+      "name": "meadowside-clinic",
+      "path": "../meadowside-clinic"
+    }
+  ],
+  "settings": {}
+}

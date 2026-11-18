@@ -14,7 +14,7 @@
 >
 > ## What we know so far (code-level review, 2026-11-18)
 >
-> **Completed & pushed pre-layout-pass (`d267cc9`, 2026-11-18):** Modern Web Guidance audit & fixes (semantic `<figure>`/`<blockquote>` testimonials, native non-exclusive `<details>`/`<summary>` FAQs, zero-JS `:user-invalid` contact validation, shared `brand-mark.svg`, WCAG `1.4.11` borders/focus rings, `@media (forced-colors: active)`, `clamp()`, `scroll-padding-top`, `fetchpriority="high"`, and W3C Nu HTML `0/0` + Jigsaw CSS `0/0` locally). Remaining design hypotheses to test visually in **Phase A**:
+> Pre-layout modernisation & conformance fixes are pushed in `d267cc9` *(full specs live in `PROJECT_STATE.md`)*. Remaining design hypotheses to test visually in **Phase A**:
 >
 > 1. **A crowded hero.** Eyebrow, H1, lead, two CTAs, a phone line, a
 >    3-column trust-metrics bar, and a large illustration all compete in the
@@ -22,14 +22,10 @@
 > 2. **Templated page openers.** Every page starts the same way
 >    (`.page-intro`: eyebrow → H1 with italic accent → lead → two-column row).
 >    Flipping through all six, they may read as one page repeated.
-> 3. **Palette swap completed locally (2026-11-18 ✅):** Rejected v3's leafy
->    emerald (`#144D46`) and coral-orange (`#C24129` / `#F16344`) and migrated
->    all CSS tokens and SVGs in `meadowside-clinic` to **190° Clinical Teal
->    (`#12525E`) + Mist (`#EAF3F5`) + Porcelain (`#FAFCFD`) + Warm Linen (`#F5F2ED`)
->    + Rosewood (`#8A3C54`)**. Visually review balance in Chrome during Phase A.
-> 4. **The illustrations.** Portrait, treatment room, map, and cranial diagram
->    have been recoloured to the new palette, but need visual inspection —
->    code can't judge whether they carry their weight or should become WebP photos.
+> 3. **Palette swap completed (`d267cc9` ✅):** Visually confirm the Clinical
+>    Teal + Rosewood balance (see `PROJECT_STATE.md` for tokens) in Chrome during Phase A.
+> 4. **The illustrations.** All SVGs now use the Clinical Teal + Rosewood palette,
+>    but need visual scoring in Chrome to judge whether they stay or become WebP photos.
 >
 > ## How to work through this
 >
@@ -51,7 +47,7 @@
 
 - [ ] **Capture a visual baseline & inspect Chrome** — Enable Chrome remote debugging (`chrome://inspect/#remote-debugging`), capture desktop (`1440px`) + mobile (`390px`/`320px`) screenshots of `d267cc9` under `docs/design/before/` (plus optional v3 `0734936` comparison from Git history), and visually inspect the Clinical Teal + Rosewood site, `:user-invalid` form validation, and `<details>` FAQs.
 - [ ] **Write the note list.** Looking at the baseline (and live site), write down 3–5 *specific* "not there yet" notes. Concrete beats vibes: "hero feels cramped at 1440px, no focal point" ✅ · "it just feels off" ❌. Check hypotheses #1, #2, and #4 (and confirm the new teal + rosewood feel).
-- [x] **Lock & apply the calibrated clinical-teal hue & non-orange accent** — Confirmed and pushed **`190°` Clinical Teal (`#12525E`) + Rosewood (`#8A3C54`)** + `#EAF3F5` / `#FAFCFD` / `#F5F2ED` across `:root`, shared `brand-mark.svg`, and all SVGs (`d267cc9`, 2026-11-18).
+- [x] **Lock & apply the calibrated clinical-teal hue & non-orange accent** — Confirmed & pushed in `d267cc9` *(see `PROJECT_STATE.md`)*.
 - [ ] **Compare against the benchmarks** (3 Selected Inspirations + 3 London Benchmarks from Olie — see `OSTEOPATH_BENCHMARKS.md`): do we balance *clean clinical credibility* with *human warmth* (differentiating from *Maris*/*Body Evolve*'s standard blues while matching *Wellthy*/*Sora*'s poise and *Muna*'s lightness)? Name the gap in one sentence.
 - [ ] **Score the four SVG artworks** (treatment room, portrait, map, cranial diagram) 1–5 each against: style consistency with each other, palette harmony, and "does this make the site feel finished?". Note which 1–2, if any, are weakest.
 - [ ] **Set priorities.** Mark 1–2 workstreams (B–E) as **PRIMARY** in the note list; the rest become stretch. State the single sentence that describes what "done" looks like (e.g. *"the site should feel like one calm, premium practice, not a Bootstrap template with a palette swap"*).
@@ -81,7 +77,7 @@
 *This is where the old "WebP vs SVG" decision actually gets made — now as a design judgement per artwork, not a blanket call.*
 
 - [ ] **For each of the four SVGs, decide: iterate, keep, or replace.** Use the Phase A scores. Keep what's working; don't rework everything out of hand-wringing.
-- [x] **Initial recolouring done (`190°` Clinical Teal + Rosewood):** Harmonised all four SVGs, `brand-mark.svg`, and `thank-you.html` checkmark to `#12525E` + `#8A3C54` + `#F5F2ED`. Still evaluate geometry/polish after Phase A scoring.
+- [x] **Initial recolouring done (`d267cc9`):** All 4 illustrations, `brand-mark.svg`, and `thank-you.html` checkmark updated to the locked palette *(see `PROJECT_STATE.md`)*. Evaluate geometry/polish after Phase A scoring.
 - [ ] **If replacing with photos:** choose royalty-free treatment-room / interior shots (avoid stock portraits — they can't be Lydia and risk reading as a false claim), convert to **WebP**, keep `width`/`height` (`fetchpriority="high"` on LCP, `loading="lazy"` below the fold), and note attribution for the README.
 - [ ] **Re-verify alt text** on every changed/replaced image so it still describes what's actually shown.
 - [ ] **Run Phase F regress**, then commit with the per-artwork decisions in the message.
@@ -90,7 +86,7 @@
 
 - [ ] **Vertical rhythm pass** — section padding (currently 3.75–4.5rem) and card inner padding: tighten or open up *deliberately*, so whitespace reads as calm, not accidental.
 - [x] **Type scale check** — Switched `h1`/`h2` to fluid `clamp()` sizing with `text-wrap: balance` and `font-size-adjust: from-font`; still check editorial spacing visually in Chrome.
-- [x] **Apply & balance the calibrated clinical-teal palette** — Updated `:root`, eliminated all hardcoded CSS hexes outside tokens, and recoloured SVG fills to `190°` Clinical Teal (`#12525E`), `#EAF3F5`, `#FAFCFD`, `#F5F2ED`, and Rosewood (`#8A3C54`); verify final balance visually in Chrome.
+- [x] **Apply & balance the calibrated clinical-teal palette (`d267cc9`)** — CSS `:root` tokens and SVGs updated *(see `PROJECT_STATE.md`)*; verify final visual balance in Chrome.
 - [ ] **Buttons & pills** — the full-radius pill buttons are a strong choice; confirm they're consistent everywhere (no straight Bootstrap `btn` leaking through) and that the primary/accent CTA treatment highlights the *one* most important action per section, not several.
 - [ ] **Utility bar & footer density** — the top clinical-teal utility bar above the navbar: is it earning its place on every page, or does it read as noise? Same check for footer column density.
 - [ ] **Run Phase F regress**, then commit.
