@@ -6,10 +6,10 @@
 
 - **Project:** Static multi-page informational website (minimum 3 distinct pages; 5 main pages + `thank-you.html`) for a newly established cranial osteopath in Twickenham, UK (fictional clinic for bootcamp assessment)
 - **Owner:** Junior developer (mentored); client = fictional GOsC-registered cranial osteopath
-- **Last updated:** 2026-11-17
+- **Last updated:** 2026-11-18
 - **Deadline:** Monday afternoon → Sunday night (hard; cannot be late)
 - **Current phase:** Phase 4 — Build (Phase 3 complete)
-- **Next action:** Review the live v3 site on GitHub Pages (`0734936`), decide whether to swap in real WebP photos or keep the custom SVG illustrations, and proceed to Phase 5 (W3C/Jigsaw validation, Lighthouse audit, screenshots, and `README.md`).
+- **Next action:** Design refinement pass per `TASKS.md` (Phase A diagnose → 1–2 primary workstreams from B–E), then Phase 5 (validation, Lighthouse, QA, screenshots, `README.md`). Workstreams are sequenced so validation/ship tasks come only after the design feels finished; the old `TOMORROW_TASKS.md` was replaced by `TASKS.md` on 2026-11-18.
 
 ## Goal & Scope
 
