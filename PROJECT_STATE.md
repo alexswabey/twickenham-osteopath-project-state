@@ -15,7 +15,9 @@
 - **Core message & tone:** Positive, reassuring focus on the **patient experience** and the calm, welcoming clinic environment. Avoid negative *"what we aren't"* framing.
 - **Audience framing:** De-emphasise segmented demographic callouts (adults, pregnancy, babies, older adults); mention varied visitors naturally in passing within copy.
 - **Trust signals:** Include strong **patient-experience trust signals** across every page—especially **Home** and **About**—keeping GOsC registration and qualifications as quiet background credibility rather than the headline focus. *(Use realistic patient reflections paired with clear fictional-practice disclosure in the footer/confirmation page.)*
-- **Scope & exclusions:** Keep the 6-page baseline (`index.html`, `about.html`, `treatments.html`, `visiting.html`, `contact.html`, `thank-you.html`). Keep fees/pricing, opening hours, embedded interactive map iframes, and online booking/accounts out of scope.
+- **Primary CTA & booking direction:** Site-wide primary CTA is **"Book an Appointment"** / **"Book"**. Integrating a free, third-party booking experience (likely on a dedicated booking page, with zero custom build or spend) is parked on the **back burner** until core Bootstrap structure is done.
+- **Appointments framing:** Streamline services down to **Initial Consultation** and **Follow-Up Session** (mentioning varied ages in passing rather than separate demographic cards).
+- **Scope & exclusions:** Keep the 6-page baseline (`index.html`, `about.html`, `treatments.html`, `visiting.html`, `contact.html`, `thank-you.html`) for now, leaving room for a future booking page. Keep fees/pricing, opening hours, embedded interactive map iframes, user accounts, and payments out of scope.
 
 ## Architecture & Visual Direction
 
@@ -25,9 +27,11 @@
 - **Build sequence:** Lock page structure and **intent of each image slot** first → source matching photography/imagery → layer typography and visual polish once structure is solid.
 - **Colour palette (Locked):** `190°` Clinical Mineral Teal (`#12525E` / `#0C3C45`), Porcelain (`#FAFCFD`), Sea-Glass Mist (`#EAF3F5` / `#F3F8F9`), Warm Linen (`#F5F2ED`), and Rosewood (`#8A3C54` / `#6E2C40`).
 - **Header & interactive defaults:** Simplify header (drop the extra dark top utility bar); use Bootstrap `.accordion` (`data-bs-*`) for FAQs and HTML5 + Bootstrap validation feedback (`contact.html` → `thank-you.html`).
+- **Location visual (`visiting.html`):** Minimal line-drawing map showing Meadowside Clinic's location on Twickenham Green, paired with a Google Maps link.
 
 ## Open Decisions
 
 - **Typography:** Preview font pairings informed by [OSTEOPATH_BENCHMARKS.md](OSTEOPATH_BENCHMARKS.md) (e.g., serif+sans, modern sans, slab+sans, vs all-serif) and select one before the styling/embellishment pass.
 - **Page structure & image intent:** Define the section-by-section structure and the purpose of each image across the 6 pages before sourcing visuals.
+- **Booking integration (back burner):** Evaluate free, zero-custom-code booking tools and whether to add a dedicated booking page once structure is locked.
 - **QA script alignment:** Update hardcoded DOM/CSS assertions in `.agents/skills/clinic-qa/scripts/` once the new Bootstrap-first markup is scaffolded.
