@@ -6,8 +6,8 @@
 
 - **Site repo:** `alexswabey/meadowside-clinic` (`../meadowside-clinic`), currently holding the prior iteration on `main` at **`f7103b9`** (`https://alexswabey.github.io/meadowside-clinic/`).
 - **Direction:** **Fresh-start rebuild on a feature branch** — preserve `f7103b9` as `archive/v4-custom-css`, keep live `main` intact while building the new Bootstrap-first iteration on a new branch, and merge when ready.
-- **Phase:** Guided design workshop — Bootstrap showcase selection & page-by-page structure (`last updated 2026-11-18`).
-- **Next:** Complete **Guided Decision 1** (pick Bootstrap 5 components from the 1–13 menu below), then walk **page by page** (`Home` → `About` → `Treatments` → `Visiting` → `Booking` → `Contact` → `Thank You`) to lock layout + image-slot intent before font previews and coding.
+- **Phase:** Guided design workshop — page-by-page structure & image intent (`Guided Decision 1 locked 2026-11-19`).
+- **Next:** Complete **Guided Decision 2** page by page (`Home` → `About` → `Treatments` → `Visiting` → `Booking` → `Contact` → `Thank You`) to lock layout and image-slot intent before font previews and coding.
 
 ## Client Brief & Content Direction
 
@@ -29,17 +29,16 @@
 - **Readability & mentoring:** Author clean, scannable HTML/CSS with helpful explanatory comments so every line is easy to review and learn from in a code editor, and explain Bootstrap features and nuances as we build *(strip dead commented-out code before final deployment)*.
 - **Build sequence:** Lock Bootstrap component toolkit → lock page structure + **image-slot intent** (slot, emotional job, what to avoid) → archive `f7103b9` & scaffold clean branch → source imagery → typography preview & visual polish.
 - **Colour palette (Locked):** `190°` Clinical Mineral Teal (`#12525E` / `#0C3C45`), Porcelain (`#FAFCFD`), Sea-Glass Mist (`#EAF3F5` / `#F3F8F9`), Warm Linen (`#F5F2ED`), and Rosewood (`#8A3C54` / `#6E2C40`).
-- **Header & interactive defaults:** Simplified header (no dark top utility bar); Bootstrap `.accordion` (`data-bs-*`) for FAQs; HTML5 + Bootstrap validation feedback (`contact.html` → `thank-you.html`).
+- **Locked Bootstrap 5 toolkit (Guided Decision 1):**
+  - *Nav:* Simplified header (no dark top utility bar) using **`.offcanvas-lg.offcanvas-end`** (`navbar-expand-lg`) for mobile slide-over navigation; **omit `.breadcrumb`** on subpages.
+  - *Layout & Trust:* Asymmetric grid (`col-lg-7`/`col-lg-5`, `offset-lg-1`) + `.order-lg-*` + `.ratio`; horizontal `.card` (`row g-0`) + `.stretched-link` (ideal for the 2 appointment pathways); **`.list-group-flush`** hairline lists (drop `.list-group-numbered`); editorial **`.figure` + `.blockquote` + `.blockquote-footer`**; restrained **`.badge.rounded-pill`** + **`border-start` callouts** (reject default `.alert` banners).
+  - *Interactive `data-bs-*` (zero JS):* **Boxed `.accordion`** with **stay-open** behaviour (omit `data-bs-parent`); **`.nav-pills` / tabs only for dense wordy parallel blocks** (keep shorter content stacked); **omit `.modal`**; **reject `.carousel`** for accessibility (WCAG 2.2.2) and content visibility.
+  - *Forms & Buttons:* **Stacked `.form-label` + `.form-control` + `.form-text`** (reject `.form-floating`) with native HTML5 validation + `method="get" action="thank-you.html"` (no hardcoded `.was-validated`); **omit `.input-group`**; clear **`.form-check` radios/checkboxes** over `.form-switch`; **`.d-grid.gap-2.d-sm-flex`** responsive button groups.
 - **Location visual (`visiting.html`):** Minimal line-drawing map showing Meadowside Clinic's location on Twickenham Green, paired with a Google Maps link.
 
 ## Open Decisions
 
-- **Guided Decision 1 — Bootstrap 5 showcase menu (next session):**
-  - *Nav:* (1) `.navbar` collapse vs `.offcanvas` mobile drawer; (2) `.breadcrumb` on subpages.
-  - *Layout & Trust:* (3) asymmetric grid + `.order-lg-*` + `.ratio`; (4) horizontal `.card` (`row g-0`) + `.stretched-link`; (5) `.list-group-flush` / `.list-group-numbered`; (6) `.figure` + `.blockquote` + `.blockquote-footer`; (7) `.badge.rounded-pill` + `.alert` / `border-start` callouts.
-  - *Interactive `data-bs-*` (zero JS):* (8) `.accordion` / `.accordion-flush` (`data-bs-parent` choice); (9) `.nav-tabs` / `.nav-pills` vs stacked content trade-off; (10) optional `.modal`; (11) `.carousel` (adopt vs consciously reject for accessibility).
-  - *Forms & Buttons:* (12) `.form-floating` vs stacked `.form-label` + `.form-text`; (13) `.input-group`, `.form-switch`, `.d-grid` responsive buttons.
-- **Guided Decision 2 — Page structure & image intent:** Walk page by page after Decision 1 to lock section layout and what each image slot must communicate before sourcing visuals.
+- **Guided Decision 2 — Page structure & image intent (next: start with `Home`):** Walk page by page (`Home` → `About` → `Treatments` → `Visiting` → `Booking` → `Contact` → `Thank You`) to lock section layout and what each image slot must communicate before sourcing visuals.
 - **Typography:** Preview font pairings informed by [OSTEOPATH_BENCHMARKS.md](OSTEOPATH_BENCHMARKS.md) (e.g., serif+sans, modern sans, slab+sans, vs all-serif) before the visual polish pass.
 - **Booking integration (back burner):** Evaluate free, zero-custom-code booking tools to wire into `booking.html` once structure is locked.
 - **QA script alignment:** Update hardcoded DOM/CSS assertions in `.agents/skills/clinic-qa/scripts/` once the new Bootstrap-first markup is scaffolded.
