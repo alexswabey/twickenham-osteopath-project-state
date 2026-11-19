@@ -6,8 +6,8 @@
 
 - **Site repo:** `alexswabey/meadowside-clinic` (`../meadowside-clinic`), currently holding the prior iteration on `main` at **`f7103b9`** (`https://alexswabey.github.io/meadowside-clinic/`).
 - **Direction:** **Fresh-start rebuild on `feat/bootstrap-rebuild`** (`dad98fc`) — `f7103b9` preserved as `archive/v4-custom-css` and live `main` kept intact until the rebuild is ready to merge.
-- **Phase:** Clean 7-page Bootstrap 5.3.9 scaffold + minimal Twickenham SVG map committed on `feat/bootstrap-rebuild` (`dad98fc`, W3C 0/0 verified `2026-11-19`).
-- **Next:** Source WebP photos matching the locked image-slot intents and review the **typography preview shortlist** informed by [OSTEOPATH_BENCHMARKS.md](OSTEOPATH_BENCHMARKS.md).
+- **Phase:** Clean 7-page Bootstrap 5.3.9 scaffold + minimal Twickenham SVG map committed on `feat/bootstrap-rebuild` (`dad98fc`). W3C Nu HTML (all 7 pages) and Jigsaw CSS (`0/0`) passed on `dad98fc`; Playwright WebKit/Chromium smoke check passed on `8c6414e` (before the `dad98fc` comment pass).
+- **Next:** Source WebP photos to replace the 8 `.clinic-slot` placeholders, review a **typography preview shortlist** informed by [OSTEOPATH_BENCHMARKS.md](OSTEOPATH_BENCHMARKS.md), then align `.agents/skills/clinic-qa/scripts/` and run the full polish/deployment pass.
 
 ## Client Brief & Content Direction
 
@@ -43,9 +43,10 @@
   - `booking.html` (*Booking placeholder*): Centered `col-lg-8` embed-ready hub (photo-free, **no duration reminder**, `border-start` enquiry + `020 8555 0142` phone actions ready for a future booking widget) → `Warm Linen` `.figure`/`.blockquote` trust band.
   - `contact.html` (*Contact*): Photo-free `7/4` split — stacked `.form-label` + `.form-control` + `.form-text` (Name, Email, optional Phone, Preferred Reply `.form-check` radios, Message; native HTML5 validation + `method="get" action="thank-you.html"`) + `.list-group-flush` direct details & `border-start` reply-pace sidebar → `Warm Linen` `.figure`/`.blockquote` trust band.
   - `thank-you.html` (*Thank You*): Photo-free centered `col-lg-8` confirmation (`Message Received` pill, `<h1>`, 2-row `.list-group-flush` next steps, `border-start` **Fictional-Practice Educational Disclosure**, `.d-grid` return CTAs).
+  - *Current placeholder state on `feat/bootstrap-rebuild`:* `8` `.clinic-slot` visual placeholders inside `.ratio` frames await real WebP `<img>` files (`index.html` ×4, `about.html` ×1, `treatments.html` ×2, `visiting.html` ×1).
 
 ## Open Decisions
 
-- **Typography:** Preview font pairings informed by [OSTEOPATH_BENCHMARKS.md](OSTEOPATH_BENCHMARKS.md) (e.g., serif+sans, modern sans, slab+sans, vs all-serif) before scaffolding & visual polish.
-- **Booking integration (back burner):** Evaluate free, zero-custom-code booking tools to wire into `booking.html` once structure is locked.
-- **QA script alignment:** Update hardcoded DOM/CSS assertions in `.agents/skills/clinic-qa/scripts/` once the new Bootstrap-first markup is scaffolded.
+- **Typography:** Preview candidate font pairings informed by [OSTEOPATH_BENCHMARKS.md](OSTEOPATH_BENCHMARKS.md) (e.g., serif+sans, modern sans, slab+sans, vs all-serif) before adding Google Fonts & visual polish (`system-ui` placeholder active now).
+- **Booking integration (back burner):** Evaluate free, zero-custom-code booking tools to wire into `booking.html` (or keep graceful placeholder) once imagery & typography are locked.
+- **QA script alignment:** Update hardcoded v4 assertions in `.agents/skills/clinic-qa/scripts/` (`check_contrast.py`: `--color-*` → `--clinic-*`; `playwright_qa.mjs`: 7 pages including `booking.html`, `.offcanvas-lg` `#clinicNav`, `.nav-pills`, boxed `#treatmentsFaq`, `.clinic-error-hint`) and re-run WebKit + Chromium QA.
