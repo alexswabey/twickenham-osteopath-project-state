@@ -5,8 +5,8 @@
 ## Status
 
 - **Site repo:** `alexswabey/meadowside-clinic` (`../meadowside-clinic`), currently holding the prior iteration on `main` at **`f7103b9`** (`https://alexswabey.github.io/meadowside-clinic/`).
-- **Direction:** **Fresh-start rebuild on `feat/bootstrap-rebuild`** (`8c6414e`) — `f7103b9` preserved as `archive/v4-custom-css` and live `main` kept intact until the rebuild is ready to merge.
-- **Phase:** Clean 7-page Bootstrap 5.3.9 scaffold + minimal Twickenham SVG map committed on `feat/bootstrap-rebuild` (`8c6414e`, W3C 0/0 & Playwright WebKit/Chromium verified `2026-11-19`).
+- **Direction:** **Fresh-start rebuild on `feat/bootstrap-rebuild`** (`dad98fc`) — `f7103b9` preserved as `archive/v4-custom-css` and live `main` kept intact until the rebuild is ready to merge.
+- **Phase:** Clean 7-page Bootstrap 5.3.9 scaffold + minimal Twickenham SVG map committed on `feat/bootstrap-rebuild` (`dad98fc`, W3C 0/0 verified `2026-11-19`).
 - **Next:** Source WebP photos matching the locked image-slot intents and review the **typography preview shortlist** informed by [OSTEOPATH_BENCHMARKS.md](OSTEOPATH_BENCHMARKS.md).
 
 ## Client Brief & Content Direction
